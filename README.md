@@ -6,9 +6,8 @@
 
 <div align="center">
 
-[![Project Page](https://img.shields.io/badge/Project_Page-BeingVL-green)](https://beingbeyond.github.io/Being-VL-0.5)
+[![Project Page](https://img.shields.io/badge/Website-Being--VL--0.5-green)](https://beingbeyond.github.io/Being-VL-0.5)
 [![arXiv](https://img.shields.io/badge/arXiv-2506.23639-b31b1b.svg)](https://arxiv.org/abs/2506.23639)
-[![Python Version](https://img.shields.io/badge/Python-3.10-blue.svg)]()
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)]()
 
 </div>

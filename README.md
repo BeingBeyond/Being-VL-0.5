@@ -1,25 +1,26 @@
 # Unified Multimodal Understanding via Byte-Pair Visual Encoding
 
 <p align="center">
-    <img src="docs/static/images/being-vl-05.png" width="300"/>
+    <img src="webpage/static/images/being-vl-05.png" width="300"/>
 <p>
 
 <div align="center">
 
 [![Project Page](https://img.shields.io/badge/Website-Being--VL--0.5-green)](https://beingbeyond.github.io/Being-VL-0.5)
 [![arXiv](https://img.shields.io/badge/arXiv-2506.23639-b31b1b.svg)](https://arxiv.org/abs/2506.23639)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)]()
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 
 </div>
 
----
+## Overview
 
-![](docs/static/images/framework.png)
+![framework](docs/static/images/framework.png)
 
 **Being-VL-0.5** is a multimodal language model that combines text and image understanding using a novel approach called Visual Byte-Pair Encoding (vBPE). Instead of treating images and text as completely separate modalities, our method applies byte-pair encoding directly to visual tokens, creating a more unified representation that helps the model better understand relationships between vision and language.
 
 ## News
 
+- **[2025-07-12]**: 🔥🔥 We release the code and training scripts!
 - **[2025-06-26]**: 🎉🎉 We publish **Being-VL-0.5**, which is accepted by ICCV 2025! Check our paper [here](https://arxiv.org/abs/2506.23639). The code and training scripts will be released soon.
 - **[2025-01-23]**: 🎉🎉 **Being-VL-0** is accepted by ICLR 2025! Check our paper [here](https://openreview.net/pdf?id=3TnLGGHhNx).
 - **[2024-10-03]**: We publish **Being-VL-0**, the first version of **Being-VL** series.
@@ -68,8 +69,8 @@ Create a workspace with the following structure:
 ### 3. Base Model Initialization
 
 **Requirements:**
-- Downloaded [Llama-3.1-8B](https://huggingface.co/meta-llama/Llama-3.1-8B) checkpoint. You can also use any text LLM, but it will require additional configuration (eg, dimensions, processing codes, etc).
-- Pretrained [VQ-GAN](https://huggingface.co/zawnpn/being-vq-8k) checkpoint. This is extracted from Meta's Chameleon model and converted to adapt to BeingVL. You may also use other VQ-GAN models.
+- Downloaded [Llama-3.1-8B](https://huggingface.co/meta-llama/Llama-3.1-8B) checkpoint. You can also use any other text-LLM, but it will require additional configuration (eg, dimensions, processing codes, etc).
+- Pretrained [VQ-GAN](https://huggingface.co/zawnpn/being-vq-8k) checkpoint. This is extracted from Meta's [Chameleon](https://huggingface.co/facebook/chameleon-7b) weights and converted to adapt to Being-VL. You can also use your own VQ-GAN models.
 - Being tokenizer config: [beingvl/config/being-tokenizer-config](beingvl/config/being-tokenizer-config)
 
 Initialize the Being-VL base model from Llama-3.1-8B using the provided tokenizer configuration:
@@ -108,15 +109,15 @@ bash beingvl/scripts/train-stage-3.sh 0
 
 For detailed instructions, see:
 
-- **[docs/Data.md](docs/Data.md)**: Data preparation and VQ encoding
-- **[docs/Train.md](docs/Train.md)**: Training configuration and commands
-- **[docs/Inference.md](docs/Inference.md)**: Using the trained model for inference
+- **[Data.md](docs/Data.md)**: Data preparation and VQ encoding
+- **[Train.md](docs/Train.md)**: Training configuration and commands
+- **[Inference.md](docs/Inference.md)**: Using the trained model for inference
 
 ## Acknowledgements
-* We thank the open-sourcing projects [Chameleon](https://github.com/facebookresearch/chameleon) and [Transformers](https://github.com/huggingface/transformers), as our code is developed based on them.
+We thank the open-sourcing projects [Chameleon](https://github.com/facebookresearch/chameleon) and [Transformers](https://github.com/huggingface/transformers), as our code is developed based on them.
 
 ## Citation
-If you find our work useful, please consider citing us!
+If you find our work useful, please consider citing us and give a star to our repository! 🌟🌟🌟
 
 **Being-VL-0.5**
 

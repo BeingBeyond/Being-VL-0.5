@@ -8,11 +8,11 @@ Before starting, ensure you have:
 - Set up the workspace directory structure (see README.md)
 - Installed Being-VL and dependencies
 - Downloaded the required pre-trained models:
-  - LLaMA 3.1-8B model
-  - Being VQ-GAN model (8K vocabulary)
-  - Being tokenizer config files
+  - [Llama-3.1-8B](https://huggingface.co/meta-llama/Llama-3.1-8B) checkpoint
+  - Being [VQ-GAN](https://huggingface.co/zawnpn/being-vq-8k) model (8K vocabulary)
+  - Being tokenizer config: [beingvl/config/being-tokenizer-config](beingvl/config/being-tokenizer-config)
 - Downloaded raw image datasets for visual BPE tokenizer training
-- Downloaded caption/conversation datasets for PT/SFT training
+- Downloaded caption/conversation datasets for PT/SFT training (same as LLaVA format)
 - *Due to data licensing, we cannot provide direct downloads. You need to obtain datasets by yourself. Details of the data components can be found in our paper.*
 
 ## Part 1: vBPE Training Data Preparation
@@ -174,6 +174,8 @@ python beingvl/utils/tokenize_dataset.py \
 - `--model_path`: Use the initialized beingvl-base model (from Step 1 model initialization)
 - `--vbpe_path`: Path to the trained vBPE tokenizer (from vBPE training step)
 - `--dataset_name`: Custom name for the dataset (will be used in output filenames)
+- `--batch_size`: Batch size for tokenization (adjust based on your GPU memory)
+- `--num_workers`: Number of parallel workers for data loading (adjust based on your CPU cores)
 
 **Output files:**
 - `*_base.jsonl`: Base tokenization without vBPE compression

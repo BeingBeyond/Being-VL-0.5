@@ -1,0 +1,28 @@
+{
+  "crop_size": {
+    "height": 512,
+    "width": 512
+  },
+  "do_center_crop": true,
+  "do_convert_rgb": true,
+  "do_normalize": true,
+  "do_rescale": true,
+  "do_resize": true,
+  "image_mean": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "image_processor_type": "ChameleonImageProcessor",
+  "image_std": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "processor_class": "ChameleonProcessor",
+  "resample": 1,
+  "rescale_factor": 0.0078,
+  "size": {
+    "shortest_edge": 512
+  }
+}

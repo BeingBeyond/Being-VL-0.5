@@ -1,7 +1,7 @@
 # Unified Multimodal Understanding via Byte-Pair Visual Encoding
 
 <p align="center">
-    <img src="webpage/static/images/being-vl-05.png" width="300"/>
+    <img src="docs/static/images/being-vl-05.png" width="300"/>
 <p>
 
 <div align="center">
@@ -12,16 +12,18 @@
 
 </div>
 
-## Overview
+<p align="center">
+    <img src="docs/static/images/framework.png" width="600"/>
+<p>
 
-![framework](docs/static/images/framework.png)
+**Being-VL-0.5** is an MLLM that combines text and image understanding using a novel approach called Visual Byte-Pair Encoding (vBPE). Instead of treating images and text as completely separate modalities, our method applies BPE tokenization directly to visual tokens, creating a more unified representation that helps the model better understand relationships between vision and language.
 
-**Being-VL-0.5** is a multimodal language model that combines text and image understanding using a novel approach called Visual Byte-Pair Encoding (vBPE). Instead of treating images and text as completely separate modalities, our method applies byte-pair encoding directly to visual tokens, creating a more unified representation that helps the model better understand relationships between vision and language.
+For more details, please refer to our paper: [Unified Multimodal Understanding via Byte-Pair Visual Encoding](https://arxiv.org/abs/2506.23639) (**ICCV'25**).
 
 ## News
 
 - **[2025-07-12]**: 🔥🔥 We release the code and training scripts!
-- **[2025-06-26]**: 🎉🎉 We publish **Being-VL-0.5**, which is accepted by ICCV 2025! Check our paper [here](https://arxiv.org/abs/2506.23639). The code and training scripts will be released soon.
+- **[2025-06-26]**: 🎉🎉 We publish **Being-VL-0.5**, which is accepted by **ICCV 2025**! Check our paper [here](https://arxiv.org/abs/2506.23639). The code and training scripts will be released soon.
 - **[2025-01-23]**: 🎉🎉 **Being-VL-0** is accepted by ICLR 2025! Check our paper [here](https://openreview.net/pdf?id=3TnLGGHhNx).
 - **[2024-10-03]**: We publish **Being-VL-0**, the first version of **Being-VL** series.
 
@@ -35,6 +37,8 @@ pip install -e .
 pip install flash-attn --no-build-isolation
 pip install -e ./transformers
 ```
+
+*We have made some modifications to the transformers library to support our model. Please install our provided transformers folder.*
 
 ### 2. Directory Setup
 
@@ -115,6 +119,9 @@ For detailed instructions, see:
 
 ## Acknowledgements
 We thank the open-sourcing projects [Chameleon](https://github.com/facebookresearch/chameleon) and [Transformers](https://github.com/huggingface/transformers), as our code is developed based on them.
+
+## Disclaimer
+The code has been refactored from our development version and may not be fully tested in the new codebase. Some minor functions are still in progress and will be included later. If you encounter any issues, please open an issue to help us improve the project.
 
 ## Citation
 If you find our work useful, please consider citing us and give a star to our repository! 🌟🌟🌟

@@ -16,7 +16,7 @@
 
 ![](docs/static/images/framework.png)
 
-Multimodal large language models (MLLMs) have made significant progress in vision-language understanding, yet effectively aligning different modalities remains a fundamental challenge. We present a framework that unifies multimodal understanding by applying byte-pair encoding to visual tokens. Unlike conventional approaches that rely on modality-specific encoders, our method directly incorporates structural information into visual tokens, mirroring successful tokenization strategies in text-only language models. We introduce a priority-guided encoding scheme that considers both frequency and spatial consistency, coupled with a multi-stage training procedure based on curriculum-driven data composition. These enhancements enable the transformer model to better capture cross-modal relationships and reason with visual information. Comprehensive experiments demonstrate improved performance across diverse vision-language tasks. By bridging the gap between visual and textual representations, our approach contributes to the advancement of more capable and efficient multimodal foundation models.
+**Being-VL-0.5** is a multimodal language model that combines text and image understanding using a novel approach called Visual Byte-Pair Encoding (vBPE). Instead of treating images and text as completely separate modalities, our method applies byte-pair encoding directly to visual tokens, creating a more unified representation that helps the model better understand relationships between vision and language.
 
 ## News
 
@@ -25,8 +25,95 @@ Multimodal large language models (MLLMs) have made significant progress in visio
 - **[2024-10-03]**: We publish **Being-VL-0**, the first version of **Being-VL** series.
 
 
-## Code
-We will release our code and training scripts soon.
+## Quick Start
+
+### 1. Installation
+
+```bash
+pip install -e .
+pip install flash-attn --no-build-isolation
+pip install -e ./transformers
+```
+
+### 2. Directory Setup
+
+Create a workspace with the following structure:
+
+```
+/path/to/your/workspace/
+├── models/
+│   ├── llama3.1-8b/              # Base LLaMA model
+│   ├── being-vq-8k/              # Being VQ-GAN model
+│   ├── being-tokenizer/          # Being tokenizer
+│   └── beingvl/                  # Output models
+│       ├── base/                 # Initialized model
+│       ├── stage-1/              # Stage 1 output
+│       ├── stage-2/              # Stage 2 output
+│       └── stage-3/              # Final model
+├── data/
+│   ├── images/                   # Raw images
+│   ├── annotations/              # JSON annotations
+│   ├── vq_tokens/                # VQ encoded tokens (.npy)
+│   ├── vbpe/                     # vBPE tokenizer (.pkl)
+│   └── tokenized/                # Tokenized datasets (.jsonl)
+│       ├── pt/                   # Stage 1 PT data
+│       ├── sft_stage2/           # Stage 2 SFT data
+│       └── sft_stage3/           # Stage 3 SFT data
+└── logs/                         # Training logs
+    ├── stage-1/
+    ├── stage-2/
+    └── stage-3/
+```
+
+### 3. Base Model Initialization
+
+**Requirements:**
+- Downloaded [Llama-3.1-8B](https://huggingface.co/meta-llama/Llama-3.1-8B) checkpoint. You can also use any text LLM, but it will require additional configuration (eg, dimensions, processing codes, etc).
+- Pretrained [VQ-GAN](https://huggingface.co/zawnpn/being-vq-8k) checkpoint. This is extracted from Meta's Chameleon model and converted to adapt to BeingVL. You may also use other VQ-GAN models.
+- Being tokenizer config: [beingvl/config/being-tokenizer-config](beingvl/config/being-tokenizer-config)
+
+Initialize the Being-VL base model from Llama-3.1-8B using the provided tokenizer configuration:
+
+```bash
+# Download Llama-3.1-8B model (if not already available)
+# Place it in /path/to/your/workspace/models/llama3.1-8b/
+
+# Initialize Being-VL base model
+python beingvl/utils/convert_llama_beingvl.py \
+    --llama_path /path/to/your/workspace/models/llama3.1-8b \
+    --being_tokenizer_config_path beingvl/config/being-tokenizer-config \
+    --being_vq_path /path/to/your/workspace/models/being-vq-8k \
+    --output_path /path/to/your/workspace/models/beingvl/base \
+    --verify_loading
+```
+
+This creates and initializes a Being-VL base model with extended vocabulary for VQ and vBPE tokens, ready for 3-stage training.
+
+### 4. Training Pipeline
+
+Being-VL uses a 3-stage training methodology:
+
+```bash
+# Stage 1
+bash beingvl/scripts/train-stage-1.sh 0
+
+# Stage 2
+bash beingvl/scripts/train-stage-2.sh 0
+
+# Stage 3
+bash beingvl/scripts/train-stage-3.sh 0
+```
+
+### 5. Documentation
+
+For detailed instructions, see:
+
+- **[docs/Data.md](docs/Data.md)**: Data preparation and VQ encoding
+- **[docs/Train.md](docs/Train.md)**: Training configuration and commands
+- **[docs/Inference.md](docs/Inference.md)**: Using the trained model for inference
+
+## Acknowledgements
+* We thank the open-sourcing projects [Chameleon](https://github.com/facebookresearch/chameleon) and [Transformers](https://github.com/huggingface/transformers), as our code is developed based on them.
 
 ## Citation
 If you find our work useful, please consider citing us!
@@ -36,7 +123,7 @@ If you find our work useful, please consider citing us!
 ```bibtex
 @inproceedings{zhang2025beingvl05,
   title={Unified Multimodal Understanding via Byte-Pair Visual Encoding},
-  author={Wanpeng Zhang and Yicheng Feng and Hao Luo and Yijiang Li and Zihao Yue and Sipeng Zheng and Zongqing Lu},
+  author={Zhang, Wanpeng and Feng, Yicheng and Luo, Hao and Li, Yijiang and Yue, Zihao and Zheng, Sipeng and Lu, Zongqing},
   booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
   year={2025}
 }
@@ -47,7 +134,7 @@ If you find our work useful, please consider citing us!
 ```bibtex
 @inproceedings{zhang2025beingvl0,
   title={From Pixels to Tokens: Byte-Pair Encoding on Quantized Visual Modalities},
-  author={Wanpeng Zhang and Zilong Xie and Yicheng Feng and Yijiang Li and Xingrun Xing and Sipeng Zheng and Zongqing Lu},
+  author={Zhang, Wanpeng and Xie, Zilong and Feng, Yicheng and Li, Yijiang and Xing, Xingrun and Zheng, Sipeng and Lu, Zongqing},
   booktitle={The Thirteenth International Conference on Learning Representations},
   year={2025},
   url={https://openreview.net/forum?id=3TnLGGHhNx}

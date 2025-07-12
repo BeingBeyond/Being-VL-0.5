@@ -2,8 +2,5 @@
 .env
 __pycache__/
 .deepspeed_env
-outputs/
-logs/
-test_dir/
-data/
 .DS_Store
+train-debug.sh

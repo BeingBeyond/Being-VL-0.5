@@ -1,0 +1,5 @@
+{
+  "image_seq_length": 1024,
+  "image_token": "<image>",
+  "processor_class": "ChameleonProcessor"
+}

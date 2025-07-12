@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "beingvl"
+version = "0.5"
+description = "Being-VL-0.5"
+authors = [
+    {name = "Wanpeng Zhang", email = "zawnpn@gmail.com"},
+]
+dependencies = [
+    "accelerate==1.8.1",
+    "deepspeed==0.17.2",
+    "jsonlines==4.0.0",
+    "mpi4py_mpich==3.1.5",
+    "pandas==2.3.1",
+    "Pillow==11.3.0",
+    "pyarrow==20.0.0",
+    "xformers==0.0.31.post1",
+    "python-dotenv==1.1.1",
+    "numpy==2.2.6",
+    "click==8.2.1",
+    "flask==3.1.1",
+    "flask_socketio==5.5.1",
+    "tensorboard==2.19.0",
+    "tensorboardX==2.6.4",
+    "numba==0.61.2",
+    "matplotlib==3.10.3",
+    "scikit-learn==1.7.0",
+    "tokenizers==0.19.1",
+    "tqdm==4.67.1",
+    "torch==2.7.1",
+    "einops==0.8.1",
+    "regex==2024.11.6",
+    "safetensors==0.5.3",
+]
+requires-python = ">=3.8"
+
+[tool.setuptools]
+packages = ["beingvl"]
+
+[tool.setuptools.package-data]
+beingvl = ["py.typed"]

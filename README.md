@@ -22,6 +22,7 @@ For more details, please refer to our paper: [Unified Multimodal Understanding v
 
 ## News
 
+- **[2025-07-24]**: 🎉🎉 Our paper is selected as ICCV <span style="color: red;"><b>Highlight</b></span>!
 - **[2025-07-12]**: 🔥🔥 We release the code and training scripts!
 - **[2025-06-26]**: 🎉🎉 We publish **Being-VL-0.5**, which is accepted by **ICCV 2025**! Check our paper [here](https://arxiv.org/abs/2506.23639). The code and training scripts will be released soon.
 - **[2025-01-23]**: 🎉🎉 **Being-VL-0** is accepted by ICLR 2025! Check our paper [here](https://openreview.net/pdf?id=3TnLGGHhNx).

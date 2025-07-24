@@ -16,13 +16,13 @@ Before starting training, ensure you have completed:
 
 ### Step 1.1: Convert LLaMA to Being-VL Base Model
 
-Initialize the base model from LLaMA 3.1-8B for training:
+Initialize the base model from LLaMA-3.1-8B for training:
 
 ```bash
 python beingvl/utils/convert_llama_to_being.py \
-    --llama_path /path/to/your/workspace/models/llama3.1-8b \
+    --llama_path /path/to/your/workspace/models/Llama-3.1-8B \
     --being_tokenizer_config_path /path/to/your/workspace/models/being-tokenizer \
-    --being_vq_path /path/to/your/workspace/models/being-vq-8k \
+    --being_vq_path /path/to/your/workspace/models/BeingVL-VQ-8K \
     --output_path /path/to/your/workspace/models/beingvl/base \
     --verify_loading
 ```

@@ -22,6 +22,7 @@ For more details, please refer to our paper: [Unified Multimodal Understanding v
 
 ## News
 
+- **[2025-07-24]**: 🎉🎉 Our paper is selected as ICCV **Highlight**!
 - **[2025-07-12]**: 🔥🔥 We release the code and training scripts!
 - **[2025-06-26]**: 🎉🎉 We publish **Being-VL-0.5**, which is accepted by **ICCV 2025**! Check our paper [here](https://arxiv.org/abs/2506.23639). The code and training scripts will be released soon.
 - **[2025-01-23]**: 🎉🎉 **Being-VL-0** is accepted by ICLR 2025! Check our paper [here](https://openreview.net/pdf?id=3TnLGGHhNx).
@@ -47,8 +48,8 @@ Create a workspace with the following structure:
 ```
 /path/to/your/workspace/
 ├── models/
-│   ├── llama3.1-8b/              # Base LLaMA model
-│   ├── being-vq-8k/              # Being VQ-GAN model
+│   ├── Llama-3.1-8B/              # Base LLaMA model
+│   ├── BeingVL-VQ-8K/              # Being VQ-GAN model
 │   ├── being-tokenizer/          # Being tokenizer
 │   └── beingvl/                  # Output models
 │       ├── base/                 # Initialized model
@@ -74,20 +75,20 @@ Create a workspace with the following structure:
 
 **Requirements:**
 - Downloaded [Llama-3.1-8B](https://huggingface.co/meta-llama/Llama-3.1-8B) checkpoint. You can also use any other text-LLM, but it will require additional configuration (eg, dimensions, processing codes, etc).
-- Pretrained [VQ-GAN](https://huggingface.co/zawnpn/being-vq-8k) checkpoint. This is extracted from Meta's [Chameleon](https://huggingface.co/facebook/chameleon-7b) weights and converted to adapt to Being-VL. You can also use your own VQ-GAN models.
+- Pretrained [VQ-GAN](https://huggingface.co/BeingBeyond/BeingVL-VQ-8K) checkpoint. This is extracted from Meta's [Chameleon](https://huggingface.co/facebook/chameleon-7b) weights and converted to adapt to Being-VL. You can also use your own VQ-GAN models.
 - Being tokenizer config: [beingvl/config/being-tokenizer-config](beingvl/config/being-tokenizer-config)
 
 Initialize the Being-VL base model from Llama-3.1-8B using the provided tokenizer configuration:
 
 ```bash
 # Download Llama-3.1-8B model (if not already available)
-# Place it in /path/to/your/workspace/models/llama3.1-8b/
+# Place it in /path/to/your/workspace/models/Llama-3.1-8B/
 
 # Initialize Being-VL base model
 python beingvl/utils/convert_llama_beingvl.py \
-    --llama_path /path/to/your/workspace/models/llama3.1-8b \
+    --llama_path /path/to/your/workspace/models/Llama-3.1-8B \
     --being_tokenizer_config_path beingvl/config/being-tokenizer-config \
-    --being_vq_path /path/to/your/workspace/models/being-vq-8k \
+    --being_vq_path /path/to/your/workspace/models/BeingVL-VQ-8K \
     --output_path /path/to/your/workspace/models/beingvl/base \
     --verify_loading
 ```

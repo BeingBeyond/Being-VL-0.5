@@ -9,7 +9,7 @@ Before starting, ensure you have:
 - Installed Being-VL and dependencies
 - Downloaded the required pre-trained models:
   - [Llama-3.1-8B](https://huggingface.co/meta-llama/Llama-3.1-8B) checkpoint
-  - Being [VQ-GAN](https://huggingface.co/zawnpn/being-vq-8k) model (8K vocabulary)
+  - Being [VQ-GAN](https://huggingface.co/BeingBeyond/BeingVL-VQ-8K) model (8K vocabulary)
   - Being tokenizer config: [beingvl/config/being-tokenizer-config](beingvl/config/being-tokenizer-config)
 - Downloaded raw image datasets for visual BPE tokenizer training
 - Downloaded caption/conversation datasets for PT/SFT training (same as LLaVA format)
@@ -32,7 +32,7 @@ from transformers import ChameleonProcessor, ChameleonVQVAE
 # Load processor and VQ-GAN model (using consistent workspace paths)
 processor = ChameleonProcessor.from_pretrained("/path/to/your/workspace/models/being-tokenizer")
 vqgan = ChameleonVQVAE.from_pretrained(
-    "/path/to/your/workspace/models/being-vq-8k",
+    "/path/to/your/workspace/models/BeingVL-VQ-8K",
     torch_dtype=torch.bfloat16,
 )
 vqgan.eval()

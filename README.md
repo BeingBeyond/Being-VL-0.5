@@ -22,6 +22,7 @@ For more details, please refer to our paper: [Unified Multimodal Understanding v
 
 ## News
 
+- **[2025-12-22]**: For more convenient development, we provide an experimental version of the vBPE dictionary. Based on this, you can skip the vBPE training and directly proceed with subsequent model development. Please download it via [this link](https://huggingface.co/BeingBeyond/BeingVL-vBPE-8K_exp).
 - **[2025-07-24]**: 🎉🎉 Our paper is selected as ICCV **Highlight**!
 - **[2025-07-12]**: 🔥🔥 We release the code and training scripts!
 - **[2025-06-26]**: 🎉🎉 We publish **Being-VL-0.5**, which is accepted by **ICCV 2025**! Check our paper [here](https://arxiv.org/abs/2506.23639). The code and training scripts will be released soon.
@@ -77,6 +78,7 @@ Create a workspace with the following structure:
 - Downloaded [Llama-3.1-8B](https://huggingface.co/meta-llama/Llama-3.1-8B) checkpoint. You can also use any other text-LLM, but it will require additional configuration (eg, dimensions, processing codes, etc).
 - Pretrained [VQ-GAN](https://huggingface.co/BeingBeyond/BeingVL-VQ-8K) checkpoint. This is extracted from Meta's [Chameleon](https://huggingface.co/facebook/chameleon-7b) weights and converted to adapt to Being-VL. You can also use your own VQ-GAN models.
 - Being tokenizer config: [beingvl/config/being-tokenizer-config](beingvl/config/being-tokenizer-config)
+- (Optional) Download our experimental version of the vBPE dictionary via [this link](https://huggingface.co/BeingBeyond/BeingVL-vBPE-8K_exp). Please note that this is a visual BPE dictionary pre-trained on a small image dataset, intended only for rapid development and verification. For better performance, we still recommend that you train your own vBPE based on your datasets.
 
 Initialize the Being-VL base model from Llama-3.1-8B using the provided tokenizer configuration:
 
